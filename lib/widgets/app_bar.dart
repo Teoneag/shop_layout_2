@@ -2,40 +2,42 @@ import 'package:flutter/material.dart';
 import '/utils/consts.dart';
 
 class AppBar1 extends StatelessWidget implements PreferredSizeWidget {
-  const AppBar1({super.key});
+  final Function(double) scrollToSection;
+  const AppBar1(this.scrollToSection, {super.key});
 
   @override
   Size get preferredSize => const Size.fromHeight(kToolbarHeight);
 
   @override
   Widget build(BuildContext context) {
+    double scrollHeight = pageHeight(context) + spaceBetweenPages;
     return AppBar(
       backgroundColor: Theme.of(context).colorScheme.inversePrimary,
       title: const Text(appName),
       actions: [
         TextButton(
-          onPressed: () {},
           child: const Text('HOME'),
+          onPressed: () => scrollToSection(0),
         ),
         TextButton(
           child: const Text('FEATURES'),
-          onPressed: () {},
+          onPressed: () => scrollToSection(scrollHeight * 1),
         ),
         TextButton(
-          onPressed: () {},
           child: const Text('SERVICES'),
+          onPressed: () => scrollToSection(scrollHeight * 2),
         ),
         TextButton(
-          onPressed: () {},
           child: const Text('FAQ'),
+          onPressed: () => scrollToSection(scrollHeight * 3),
         ),
         TextButton(
-          onPressed: () {},
           child: const Text('PRICES'),
+          onPressed: () => scrollToSection(scrollHeight * 4),
         ),
         TextButton(
-          onPressed: () {},
           child: const Text('TESTIMONIALS'),
+          onPressed: () => scrollToSection(scrollHeight * 6),
         ),
         SizedBox(
           width: MediaQuery.of(context).size.width * 0.07,

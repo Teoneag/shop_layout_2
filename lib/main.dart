@@ -1,6 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:shop_layout_2/utils/consts.dart';
-import 'package:shop_layout_2/widgets/checked_text.dart';
+import 'package:shop_layout_2/utils/routes.dart';
+import '/pages/faq_widget.dart';
+import '/pages/features_widget.dart';
+import '/pages/home_widget.dart';
+import '/pages/prices_widget.dart';
+import '/pages/services_widget.dart';
+import '/pages/testimonials_widget.dart';
+import '/utils/consts.dart';
 import '/widgets/app_bar.dart';
 
 void main() {
@@ -14,90 +20,62 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
+
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
       // TODO hide debug
       // TODO make dark theme
+      onGenerateRoute: generateLocalRoutes,
       home: const MyHomePage(),
     );
   }
 }
 
-class MyHomePage extends StatelessWidget {
+class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key});
+
+  @override
+  State<MyHomePage> createState() => _MyHomePageState();
+}
+
+class _MyHomePageState extends State<MyHomePage> {
+  final _scrollC = ScrollController();
+
+  void _scrollToSection(double offset) {
+    _scrollC.animateTo(
+      offset,
+      duration: const Duration(milliseconds: 500),
+      curve: Curves.easeInOut,
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const AppBar1(),
-      body: Padding(
-        padding: const EdgeInsets.all(40),
-        child: SingleChildScrollView(
-          child: Column(
-            children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: [
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        'Welcome to $appName, The Most Friendly Store',
-                        style: Theme.of(context).textTheme.titleLarge,
-                      ),
-                      const Text("We're selling physical and digital products"),
-                      checkedText('Option 1'),
-                      checkedText('Option 2'),
-                      checkedText('Option 3'),
-                      checkedText('Option 4'),
-                      checkedText('Option 5'),
-                    ],
-                  ),
-                  Card(
-                    elevation: 20,
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(
-                        vertical: 30,
-                        horizontal: 70,
-                      ),
-                      child: Column(
-                        children: [
-                          Text(
-                            'Most popular',
-                            style: Theme.of(context).textTheme.titleLarge,
-                          ),
-                          const SizedBox(height: 15),
-                          Text(
-                            'GOLD 4 CC PACK',
-                            style: Theme.of(context).textTheme.titleMedium,
-                          ),
-                          const SizedBox(height: 15),
-                          Text(
-                            '\$269',
-                            style: Theme.of(context).textTheme.displayLarge,
-                          ),
-                          const SizedBox(height: 15),
-                          Text(
-                            'Each product limit > \$2500',
-                            style: Theme.of(context).textTheme.titleSmall,
-                          ),
-                          const SizedBox(height: 5),
-                          const Text('Use via ... guide'),
-                          const SizedBox(height: 15),
-                          ElevatedButton(
-                            onPressed: () {},
-                            child: const Text('PURCHASE'),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            ],
-          ),
+      appBar: AppBar1(_scrollToSection),
+      body: SingleChildScrollView(
+        controller: _scrollC,
+        child: Column(
+          children: [
+            homeWidget(context),
+            const SizedBox(height: spaceBetweenPages),
+            featuresWidget(context),
+            const SizedBox(height: spaceBetweenPages),
+            servicesWidget(context),
+            const SizedBox(height: spaceBetweenPages),
+            faqWidget(context),
+            const SizedBox(height: spaceBetweenPages),
+            pricesWidget(context, 0, 'Digital'),
+            const SizedBox(height: spaceBetweenPages),
+            pricesWidget(context, 3, 'Physical'),
+            const SizedBox(height: spaceBetweenPages),
+            testimonialsWidget(context),
+            const SizedBox(height: spaceBetweenPages),
+            const Text('© 2023 $appName Store. All Rights Reserved.'),
+            const SizedBox(height: spaceBetweenPages),
+          ],
         ),
       ),
     );
