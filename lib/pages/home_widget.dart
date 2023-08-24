@@ -33,6 +33,7 @@ Widget homeWidget(BuildContext context) {
           child: IntrinsicHeight(
             child: Column(
               children: [
+                // TODO make this one be one of the packages
                 Text(
                   'Most popular',
                   style: Theme.of(context).textTheme.titleLarge,
@@ -57,7 +58,7 @@ Widget homeWidget(BuildContext context) {
                 const SizedBox(height: 15),
                 ElevatedButton(
                   onPressed: () {
-                    optionNr = 3;
+                    selectedOptionNr = 3;
                     Navigator.of(context).pushNamedAndRemoveUntil(
                         Routes.buyPhysical1, (route) => false);
                   },

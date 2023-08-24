@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:shop_layout_2/utils/consts.dart';
+import 'package:shop_layout_2/utils/global_vars.dart';
 import 'package:shop_layout_2/utils/routes.dart';
 
 Widget cardGeneral({required Widget child}) {
@@ -65,9 +66,16 @@ Widget cardPrices(
           Text('${packages[optionNr]![5]}'),
           const SizedBox(height: 15),
           ElevatedButton(
-            onPressed: () => Navigator.of(context).pushNamedAndRemoveUntil(
-                Routes.buyPhysical1, (route) => false,
-                arguments: optionNr),
+            onPressed: () {
+              selectedOptionNr = optionNr;
+              if (optionNr < 4) {
+                Navigator.of(context).pushNamedAndRemoveUntil(
+                    Routes.buyDigital, (route) => false);
+              } else {
+                Navigator.of(context).pushNamedAndRemoveUntil(
+                    Routes.buyPhysical1, (route) => false);
+              }
+            },
             child: const Text('PURCHASE'),
           ),
         ],

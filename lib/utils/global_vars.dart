@@ -1,1 +1,1 @@
-int optionNr = 0;
+int selectedOptionNr = 0;
