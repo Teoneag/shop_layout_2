@@ -8,7 +8,7 @@ Widget cardGeneral({required Widget child}) {
     child: Padding(
       padding: const EdgeInsets.symmetric(
         vertical: 30,
-        horizontal: 70,
+        horizontal: 60,
       ),
       child: child,
     ),
@@ -65,8 +65,9 @@ Widget cardPrices(
           Text('${packages[optionNr]![5]}'),
           const SizedBox(height: 15),
           ElevatedButton(
-            onPressed: () => Navigator.of(context)
-                .pushNamed(Routes.buyPhysical1, arguments: optionNr),
+            onPressed: () => Navigator.of(context).pushNamedAndRemoveUntil(
+                Routes.buyPhysical1, (route) => false,
+                arguments: optionNr),
             child: const Text('PURCHASE'),
           ),
         ],

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shop_layout_2/utils/global_vars.dart';
 import 'package:shop_layout_2/utils/routes.dart';
 import 'package:shop_layout_2/widgets/card_widget.dart';
 import 'package:shop_layout_2/widgets/page_widget.dart';
@@ -55,8 +56,11 @@ Widget homeWidget(BuildContext context) {
                 const Text('Use via ... guide'),
                 const SizedBox(height: 15),
                 ElevatedButton(
-                  onPressed: () => Navigator.of(context)
-                      .pushNamed(Routes.buyPhysical1, arguments: 3),
+                  onPressed: () {
+                    optionNr = 3;
+                    Navigator.of(context).pushNamedAndRemoveUntil(
+                        Routes.buyPhysical1, (route) => false);
+                  },
                   child: const Text('PURCHASE'),
                 ),
               ],

@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:shop_layout_2/utils/routes.dart';
+import '/utils/routes.dart';
 import '/pages/faq_widget.dart';
 import '/pages/features_widget.dart';
 import '/pages/home_widget.dart';
 import '/pages/prices_widget.dart';
 import '/pages/services_widget.dart';
-import '/pages/testimonials_widget.dart';
 import '/utils/consts.dart';
 import '/widgets/app_bar.dart';
 
@@ -34,7 +33,8 @@ class MyApp extends StatelessWidget {
 }
 
 class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key});
+  final int? section;
+  const MyHomePage({this.section, super.key});
 
   @override
   State<MyHomePage> createState() => _MyHomePageState();
@@ -43,12 +43,22 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   final _scrollC = ScrollController();
 
-  void _scrollToSection(double offset) {
+  void _scrollToSection(int section) {
     _scrollC.animateTo(
-      offset,
+      section * (pageHeight(context) + spaceBetweenPages),
       duration: const Duration(milliseconds: 500),
       curve: Curves.easeInOut,
     );
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (widget.section != null) {
+        _scrollToSection(widget.section!);
+      }
+    });
   }
 
   @override
@@ -71,8 +81,9 @@ class _MyHomePageState extends State<MyHomePage> {
             const SizedBox(height: spaceBetweenPages),
             pricesWidget(context, 3, 'Physical'),
             const SizedBox(height: spaceBetweenPages),
-            testimonialsWidget(context),
+            // testimonialsWidget(context),
             const SizedBox(height: spaceBetweenPages),
+            const Text('Contact us at example@gmail.com'),
             const Text('© 2023 $appName Store. All Rights Reserved.'),
             const SizedBox(height: spaceBetweenPages),
           ],
