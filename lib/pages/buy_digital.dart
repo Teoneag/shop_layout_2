@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shop_layout_2/widgets/payment_widget.dart';
 import 'package:shop_layout_2/widgets/text_and_textfield.dart';
 import '/utils/consts.dart';
 import '/utils/global_vars.dart';
@@ -105,19 +106,7 @@ class _BuyDigitalPageState extends State<BuyDigitalPage> {
         ),
         const SizedBox(height: 30),
         if (_stepValue == 2)
-          Card(
-            child: Padding(
-              padding: const EdgeInsets.all(15),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text("Payment section",
-                      style: Theme.of(context).textTheme.titleLarge),
-                  const SizedBox(height: 15),
-                ],
-              ),
-            ),
-          ),
+          PaymentWidget(packages[selectedOptionNr]![1] as double),
       ],
     );
   }

@@ -28,6 +28,7 @@ class ScreenWidget extends StatelessWidget {
           child: Column(
             children: [
               ...children,
+              const SizedBox(height: 30),
               const Text('Contact us at example@gmail.com'),
               const Text('© 2023 $appName Store. All Rights Reserved.'),
             ],

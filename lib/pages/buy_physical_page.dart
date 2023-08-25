@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shop_layout_2/widgets/payment_widget.dart';
 import '/widgets/progress_bar.dart';
 import '/widgets/screen_widget.dart';
 import '/utils/global_vars.dart';
@@ -22,6 +23,7 @@ class BuyPhysicalPage extends StatefulWidget {
 
 class _BuyPhysicalPageState extends State<BuyPhysicalPage> {
   final _formKey = GlobalKey<FormState>();
+  final _scrollC = ScrollController();
   int _stepValue = 1;
   final _regionI = IntW(0);
   final _shippingI = IntW(0);
@@ -122,15 +124,19 @@ class _BuyPhysicalPageState extends State<BuyPhysicalPage> {
                       isMultiLine: true, isOptional: true),
                   TextF1('Enter a promo code', 'Example promo code', _promoC,
                       isOptional: true),
-                  ElevatedButton(
-                    onPressed: () {
-                      if (_formKey.currentState!.validate()) {}
-                      setState(() {
-                        _stepValue = 2;
-                      });
-                    },
-                    child: const Text('PROCEED TO CHECKOUT'),
-                    // TODO make check out: get btc price from api, make a qr code, make a timer, make a button to copy the address
+                  Visibility(
+                    visible: _stepValue == 1,
+                    child: ElevatedButton(
+                      onPressed: () {
+                        if (_formKey.currentState!.validate()) {}
+                        setState(() {
+                          _stepValue = 2;
+                        });
+                        // TODO change layout
+                      },
+                      child: const Text('PROCEED TO CHECKOUT'),
+                      // TODO make check out: get btc price from api, make a qr code, make a timer, make a button to copy the address
+                    ),
                   ),
                 ],
               ),
@@ -138,21 +144,12 @@ class _BuyPhysicalPageState extends State<BuyPhysicalPage> {
           ),
         ),
         const SizedBox(height: 30),
-        if (_stepValue == 2)
-          Card(
-            child: Padding(
-              padding: const EdgeInsets.all(15),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text("Payment section",
-                      style: Theme.of(context).textTheme.titleLarge),
-                  const SizedBox(height: 15),
-                ],
-              ),
-            ),
-          ),
+        Visibility(
+          visible: _stepValue == 2,
+          child: PaymentWidget(packages[selectedOptionNr]![1] as double),
+        ),
       ],
+      scrollController: _scrollC,
     );
   }
 }

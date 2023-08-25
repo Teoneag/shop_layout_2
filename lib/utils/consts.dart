@@ -10,6 +10,8 @@ double pageHeight(BuildContext context) {
   return MediaQuery.of(context).size.height - kToolbarHeight;
 }
 
+const btcAdress = 'bc1qxy2kgdygjrsqtzq2n0yrf2493p83kkfjhx0wlh';
+
 const faq1 = {
   'Why should I trust you?':
       'Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
@@ -125,6 +127,13 @@ const regions = [
 const shippingM = [
   'UPS standard delivery | 7 - 12 days | \$0',
   'UPS express delivery | 2 - 56 days | \$20',
+];
+
+const tableValues = [
+  'Time',
+  'Amount',
+  'Transaction ID (txid)',
+  'Confirmations',
 ];
 
 const countries = [
