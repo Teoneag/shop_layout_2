@@ -1,28 +1,29 @@
 import 'package:flutter/material.dart';
-import '/utils/consts.dart';
+import '/utils/global_vars.dart';
 import '/utils/routes.dart';
+import '../utils/strings.dart';
 import '/widgets/app_bar_widget.dart';
 
 class ScreenWidget extends StatelessWidget {
   final List<Widget> children;
-  final void Function(int section)? selectSection;
-  final ScrollController? scrollController;
+  final ScrollController? scrollC;
+  final void Function(int)? selectOption;
 
   const ScreenWidget(this.children,
-      {this.scrollController, this.selectSection, super.key});
+      {this.scrollC, this.selectOption, super.key});
+
+  void _selectOption(BuildContext context, int i) {
+    homeI = i;
+    Navigator.of(context)
+        .pushNamedAndRemoveUntil(Routes.home, (route) => false);
+  }
 
   @override
   Widget build(BuildContext context) {
-    void pushHome(int section) {
-      Navigator.of(context).pushNamedAndRemoveUntil(
-          Routes.home, (route) => false,
-          arguments: section);
-    }
-
     return Scaffold(
-      appBar: AppBar1(selectSection ?? pushHome),
+      appBar: AppBar1(selectOption ?? (i) => _selectOption(context, i)),
       body: SingleChildScrollView(
-        controller: scrollController,
+        controller: scrollC,
         child: Padding(
           padding: const EdgeInsets.symmetric(vertical: 30),
           child: Column(

@@ -1,4 +1,7 @@
+import 'package:flutter/gestures.dart';
+import 'package:url_launcher/url_launcher.dart';
 import 'package:flutter/material.dart';
+import '/utils/consts.dart';
 
 class HowToPay extends StatelessWidget {
   const HowToPay({super.key});
@@ -17,9 +20,21 @@ class HowToPay extends StatelessWidget {
             const SizedBox(height: 15),
             Text('1. Register', style: Theme.of(context).textTheme.titleLarge),
             const SizedBox(height: 10),
-            const Text(
-                'Register on any trusted bitcoin exchange service. We recommend you to create an account on localbitcoins.com'),
-            // TODO add link
+            RichText(
+              text: TextSpan(
+                text:
+                    'Register on any trusted bitcoin exchange service. We recommend you to create an account on ',
+                children: [
+                  TextSpan(
+                    style: urlStyle,
+                    text: 'localbitcoins.com',
+                    recognizer: TapGestureRecognizer()
+                      ..onTap = () =>
+                          launchUrl(Uri.parse('https://localbitcoins.com/')),
+                  ),
+                ],
+              ),
+            ),
             const SizedBox(height: 15),
             Text('2. Buy', style: Theme.of(context).textTheme.titleLarge),
             const SizedBox(height: 10),
@@ -36,3 +51,24 @@ class HowToPay extends StatelessWidget {
     );
   }
 }
+
+//           child: RichText(
+//             text: TextSpan(
+//               children: [
+//                 TextSpan(text: 'This is a sentence with a '),
+//                 TextSpan(
+//                   text: 'link',
+//                   style: TextStyle(color: Colors.blue),
+//                   recognizer: TapGestureRecognizer()
+//                     ..onTap = () => launch('https://www.example.com'),
+//                 ),
+//                 TextSpan(text: ' in the middle.'),
+//               ],
+//             ),
+//           ),
+//         ),
+//       ),
+//     );
+//   }
+// }
+

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '/utils/consts.dart';
+import '../utils/strings.dart';
 import '/utils/global_vars.dart';
 import '/utils/routes.dart';
 

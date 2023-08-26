@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:qr_flutter/qr_flutter.dart';
 import '/api/cryptocompare_api.dart';
-import '/utils/consts.dart';
+import '../utils/strings.dart';
 import '/widgets/how_to_pay_widget.dart';
 
 class PaymentWidget extends StatelessWidget {

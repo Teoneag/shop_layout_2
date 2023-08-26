@@ -15,13 +15,10 @@ final Map<String, WidgetBuilder> routes = {
   Routes.buyDigital: (context) => const BuyDigitalScreen(),
 };
 
+// TODO remove this if not needed
+
 Route<dynamic> generateLocalRoutes(RouteSettings settings) {
   switch (settings.name) {
-    case Routes.home:
-      return MaterialPageRoute(
-          builder: (context) => MyHomePage(
-                section: settings.arguments as int,
-              ));
     default:
       return MaterialPageRoute(builder: routes[settings.name]!);
   }

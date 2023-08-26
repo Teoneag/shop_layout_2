@@ -1,19 +1,15 @@
 import 'package:flutter/material.dart';
+import 'utils/consts.dart';
 import '/widgets/screen_widget.dart';
 import '/utils/routes.dart';
-import 'pages/faq_page.dart';
-import 'pages/features_page.dart';
-import 'pages/home_page.dart';
-import 'pages/prices_page.dart';
-import 'pages/services_page.dart';
-import '/utils/consts.dart';
+import 'utils/strings.dart';
+import 'utils/global_vars.dart';
 
 void main() {
   runApp(const MyApp());
 }
 
-// TODO make the title on appbar go home
-// TODO add continue shopping
+// TODO add continue shopping + always remember all the choices
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -21,8 +17,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
-
+      title: appName,
       theme: ThemeData(
         // colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
@@ -36,8 +31,7 @@ class MyApp extends StatelessWidget {
 }
 
 class MyHomePage extends StatefulWidget {
-  final int? section;
-  const MyHomePage({this.section, super.key});
+  const MyHomePage({super.key});
 
   @override
   State<MyHomePage> createState() => _MyHomePageState();
@@ -61,34 +55,33 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   void initState() {
     super.initState();
+    scrollToSection = _scrollToSection;
     WidgetsBinding.instance.addPostFrameCallback((_) {
-      if (widget.section != null) {
-        _teleportToSection(widget.section!);
-      }
+      _teleportToSection(homeI);
     });
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    _scrollC.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
     return ScreenWidget(
-      [
-        homePage(context),
-        const SizedBox(height: spaceBetweenPages),
-        featuresPage(context),
-        const SizedBox(height: spaceBetweenPages),
-        servicesPage(context),
-        const SizedBox(height: spaceBetweenPages),
-        faqPage(context),
-        const SizedBox(height: spaceBetweenPages),
-        pricesPage(context, 0, 'Digital'),
-        const SizedBox(height: spaceBetweenPages),
-        pricesPage(context, 3, 'Physical'),
-        const SizedBox(height: spaceBetweenPages),
-        // testimonialsWidget(context),
-        const SizedBox(height: spaceBetweenPages),
-      ],
-      scrollController: _scrollC,
-      selectSection: _scrollToSection,
+      pages.entries
+          .map(
+            (entry) => Column(
+              children: [
+                entry.value,
+                const SizedBox(height: spaceBetweenPages),
+              ],
+            ),
+          )
+          .toList(),
+      scrollC: _scrollC,
+      selectOption: _scrollToSection,
     );
   }
 }

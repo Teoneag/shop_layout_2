@@ -1,9 +1,16 @@
 import 'package:flutter/material.dart';
-import '/utils/consts.dart';
+import '../utils/consts.dart';
 
-Widget pageWidget(BuildContext context, Widget child) {
-  return SizedBox(
-    height: pageHeight(context),
-    child: child,
-  );
+class PageWidget extends StatelessWidget {
+  final Widget child;
+
+  const PageWidget(this.child, {super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      height: pageHeight(context),
+      child: child,
+    );
+  }
 }

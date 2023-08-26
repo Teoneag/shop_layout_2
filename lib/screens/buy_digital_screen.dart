@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import '/widgets/payment_widget.dart';
 import '/widgets/text_and_textfield_widget.dart';
-import '/utils/consts.dart';
+import '../utils/strings.dart';
 import '/utils/global_vars.dart';
 import '/utils/utils.dart';
 import '/widgets/card_widget.dart';
@@ -97,7 +97,6 @@ class _BuyDigitalScreenState extends State<BuyDigitalScreen> {
                       });
                     },
                     child: const Text('PROCEED TO CHECKOUT'),
-                    // TODO make check out: get btc price from api, make a qr code, make a timer, make a button to copy the address
                   ),
                 ],
               ),

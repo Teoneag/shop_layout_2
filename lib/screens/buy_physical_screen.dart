@@ -6,7 +6,7 @@ import '/utils/global_vars.dart';
 import '/utils/utils.dart';
 import '/widgets/drop_down_widget.dart';
 import '/widgets/text_and_textfield_widget.dart';
-import '/utils/consts.dart';
+import '../utils/strings.dart';
 import '/widgets/card_widget.dart';
 
 class BuyPhysicalScreen extends StatefulWidget {
@@ -16,14 +16,11 @@ class BuyPhysicalScreen extends StatefulWidget {
   State<BuyPhysicalScreen> createState() => _BuyPhysicalScreenState();
 }
 
-// TODO add the @c at the bottom of the page
 // TODO make the email validator
 // TODO make the progress always be at the top of the page
-// TODO always remember all the choices
 
 class _BuyPhysicalScreenState extends State<BuyPhysicalScreen> {
   final _formKey = GlobalKey<FormState>();
-  final _scrollC = ScrollController();
   int _stepValue = 1;
   final _regionI = IntW(0);
   final _shippingI = IntW(0);
@@ -132,10 +129,8 @@ class _BuyPhysicalScreenState extends State<BuyPhysicalScreen> {
                         setState(() {
                           _stepValue = 2;
                         });
-                        // TODO change layout
                       },
                       child: const Text('PROCEED TO CHECKOUT'),
-                      // TODO make check out: get btc price from api, make a qr code, make a timer, make a button to copy the address
                     ),
                   ),
                 ],
@@ -149,7 +144,6 @@ class _BuyPhysicalScreenState extends State<BuyPhysicalScreen> {
           child: PaymentWidget(packages[selectedOptionNr]![1] as double),
         ),
       ],
-      scrollController: _scrollC,
     );
   }
 }
