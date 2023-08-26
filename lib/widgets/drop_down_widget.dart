@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:shop_layout_2/utils/utils.dart';
+import '/utils/utils.dart';
 
 class DropDown1 extends StatelessWidget {
   final String text;

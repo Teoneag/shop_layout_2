@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:qr_flutter/qr_flutter.dart';
-import 'package:shop_layout_2/api/cryptocompare_api.dart';
-import 'package:shop_layout_2/utils/consts.dart';
-import 'package:shop_layout_2/widgets/how_to_pay_widget.dart';
+import '/api/cryptocompare_api.dart';
+import '/utils/consts.dart';
+import '/widgets/how_to_pay_widget.dart';
 
 class PaymentWidget extends StatelessWidget {
   final double price;

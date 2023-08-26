@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:shop_layout_2/utils/consts.dart';
-import 'package:shop_layout_2/utils/routes.dart';
-import 'package:shop_layout_2/widgets/app_bar.dart';
+import '/utils/consts.dart';
+import '/utils/routes.dart';
+import '/widgets/app_bar_widget.dart';
 
 class ScreenWidget extends StatelessWidget {
   final List<Widget> children;

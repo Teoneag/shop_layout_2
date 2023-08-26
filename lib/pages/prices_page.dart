@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import '/widgets/card_widget.dart';
 import '/widgets/page_widget.dart';
 
-Widget pricesWidget(BuildContext context, int optionShift, String optionName) {
+Widget pricesPage(BuildContext context, int optionShift, String optionName) {
   return pageWidget(
     context,
     Column(

@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:shop_layout_2/utils/global_vars.dart';
-import 'package:shop_layout_2/utils/routes.dart';
-import 'package:shop_layout_2/widgets/card_widget.dart';
-import 'package:shop_layout_2/widgets/page_widget.dart';
+import '/utils/global_vars.dart';
+import '/utils/routes.dart';
+import '/widgets/card_widget.dart';
+import '/widgets/page_widget.dart';
 import '/utils/consts.dart';
 
-Widget homeWidget(BuildContext context) {
+Widget homePage(BuildContext context) {
   return pageWidget(
     context,
     Row(

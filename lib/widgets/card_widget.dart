@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:shop_layout_2/utils/consts.dart';
-import 'package:shop_layout_2/utils/global_vars.dart';
-import 'package:shop_layout_2/utils/routes.dart';
+import '/utils/consts.dart';
+import '/utils/global_vars.dart';
+import '/utils/routes.dart';
 
 Widget cardGeneral({required Widget child}) {
   return Card(

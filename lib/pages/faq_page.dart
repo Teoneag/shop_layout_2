@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:shop_layout_2/widgets/card_widget.dart';
+import '/widgets/card_widget.dart';
 import '/utils/consts.dart';
 import '/widgets/page_widget.dart';
 
-Widget faqWidget(BuildContext context) {
+Widget faqPage(BuildContext context) {
   return pageWidget(
     context,
     Column(

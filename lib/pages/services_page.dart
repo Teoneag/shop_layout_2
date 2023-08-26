@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:shop_layout_2/widgets/page_widget.dart';
+import '/widgets/page_widget.dart';
 
-Widget servicesWidget(BuildContext context) {
+Widget servicesPage(BuildContext context) {
   return pageWidget(
     context,
     Column(

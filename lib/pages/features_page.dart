@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:shop_layout_2/widgets/card_widget.dart';
-import 'package:shop_layout_2/widgets/page_widget.dart';
+import '/widgets/card_widget.dart';
+import '/widgets/page_widget.dart';
 
-Widget featuresWidget(context) {
+Widget featuresPage(context) {
   return pageWidget(
     context,
     Column(
