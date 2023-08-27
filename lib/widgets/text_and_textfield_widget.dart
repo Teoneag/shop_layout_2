@@ -1,3 +1,4 @@
+import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
 
 class TextF1 extends StatelessWidget {
@@ -7,6 +8,7 @@ class TextF1 extends StatelessWidget {
   final TextEditingController controller;
   final bool? isMultiLine;
   final bool? isOptional;
+  final bool? isEmail;
 
   const TextF1(
     this.text,
@@ -15,6 +17,7 @@ class TextF1 extends StatelessWidget {
     this.description,
     this.isMultiLine,
     this.isOptional,
+    this.isEmail,
     super.key,
   });
 
@@ -29,7 +32,6 @@ class TextF1 extends StatelessWidget {
         ),
         if (description != null) const SizedBox(height: 5),
         if (description != null) Text(description!),
-        if (description != null) const SizedBox(height: 5),
         const SizedBox(height: 5),
         SizedBox(
           width: MediaQuery.of(context).size.width / 4,
@@ -40,6 +42,11 @@ class TextF1 extends StatelessWidget {
               }
               if (value == null || value.isEmpty) {
                 return 'Please complete this field';
+              }
+              if (isEmail == true) {
+                if (!EmailValidator.validate(value)) {
+                  return 'Please enter a valid email address';
+                }
               }
               return null;
             },

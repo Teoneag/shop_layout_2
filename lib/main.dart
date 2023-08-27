@@ -9,7 +9,7 @@ void main() {
   runApp(const MyApp());
 }
 
-// TODO add continue shopping + always remember all the choices
+// TODO add continue shopping + always remember all the choices + be able to change everything
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});

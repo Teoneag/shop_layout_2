@@ -16,8 +16,8 @@ class BuyPhysicalScreen extends StatefulWidget {
   State<BuyPhysicalScreen> createState() => _BuyPhysicalScreenState();
 }
 
-// TODO make the email validator
-// TODO make the progress always be at the top of the page
+// TODO make the progress always
+// be at the top of the page
 
 class _BuyPhysicalScreenState extends State<BuyPhysicalScreen> {
   final _formKey = GlobalKey<FormState>();
@@ -104,9 +104,14 @@ class _BuyPhysicalScreenState extends State<BuyPhysicalScreen> {
                       _regionI, setState),
                   DropDown1('Choose a shipping method', shippingM, _shippingI,
                       setState),
-                  TextF1('Enter your email', 'example@gmail.com', _emailC,
-                      description:
-                          "We strongly recomand you to register on mail. We'll send you a track number within 24 hours of this email"),
+                  TextF1(
+                    'Enter your email',
+                    'example@gmail.com',
+                    _emailC,
+                    description:
+                        "We strongly recomand you to register on mail. We'll send you a track number within 24 hours of this email",
+                    isEmail: true,
+                  ),
                   const Text(
                       'Please fill the inpust that you can fill in depending on your region or leave blank'),
                   const SizedBox(height: 10),

@@ -2,12 +2,19 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:qr_flutter/qr_flutter.dart';
 import '/api/cryptocompare_api.dart';
-import '../utils/strings.dart';
+import '/utils/strings.dart';
 import '/widgets/how_to_pay_widget.dart';
 
-class PaymentWidget extends StatelessWidget {
+class PaymentWidget extends StatefulWidget {
   final double price;
   const PaymentWidget(this.price, {super.key});
+
+  @override
+  State<PaymentWidget> createState() => _PaymentWidgetState();
+}
+
+class _PaymentWidgetState extends State<PaymentWidget> {
+  bool _isCopied = false;
 
   @override
   Widget build(BuildContext context) {
@@ -34,15 +41,15 @@ class PaymentWidget extends StatelessWidget {
                           Row(
                             mainAxisSize: MainAxisSize.min,
                             children: [
-                              Text('$price USD'),
+                              Text('${widget.price} USD'),
                               const Text(' = '),
                               Text(
-                                  '${(price / snapshot.data!).toStringAsFixed(8)} BTC'),
+                                  '${(widget.price / snapshot.data!).toStringAsFixed(8)} BTC'),
                             ],
                           ),
                           const SizedBox(height: 10),
                           Text(
-                              'Copy our bitcoin adress or scan it below using your phone and send ${(price / snapshot.data!).toStringAsFixed(8)} BTC using your bitcoin wallet'),
+                              'Copy our bitcoin adress or scan it below using your phone and send ${(widget.price / snapshot.data!).toStringAsFixed(8)} BTC using your bitcoin wallet'),
                         ],
                       );
                     } else {
@@ -71,13 +78,16 @@ class PaymentWidget extends StatelessWidget {
                       const SizedBox(height: 10),
                       ElevatedButton(
                         onPressed: () {
-                          // TODO make a button to copy the address
+                          // TODO add animation
                           Clipboard.setData(
-                            const ClipboardData(
-                                text: btcAdress), // TODO animate
-                          );
+                            const ClipboardData(text: btcAdress),
+                          ).then((value) => setState(() {
+                                _isCopied = true;
+                              }));
                         },
-                        child: const Text('Copy address to clipboard'),
+                        child: Text(!_isCopied
+                            ? 'Copy address to clipboard'
+                            : 'Copied to clipboard - tap to copy again'),
                       ),
                     ],
                   ),
