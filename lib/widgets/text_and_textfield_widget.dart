@@ -1,11 +1,13 @@
 import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
+import '/utils/utils.dart';
 
 class TextF1 extends StatelessWidget {
   final String text;
   final String? description;
   final String hint;
   final TextEditingController controller;
+  final StringW data;
   final bool? isMultiLine;
   final bool? isOptional;
   final bool? isEmail;
@@ -13,7 +15,8 @@ class TextF1 extends StatelessWidget {
   const TextF1(
     this.text,
     this.hint,
-    this.controller, {
+    this.controller,
+    this.data, {
     this.description,
     this.isMultiLine,
     this.isOptional,
@@ -36,6 +39,10 @@ class TextF1 extends StatelessWidget {
         SizedBox(
           width: MediaQuery.of(context).size.width / 4,
           child: TextFormField(
+            onChanged: (value) {
+              data.v = value;
+              print(data.v);
+            },
             validator: (value) {
               if (isOptional == true) {
                 return null;
@@ -50,7 +57,7 @@ class TextF1 extends StatelessWidget {
               }
               return null;
             },
-            controller: controller,
+            // controller: controller,
             maxLines: isMultiLine == true ? 5 : 1,
             decoration: InputDecoration(
               hintText: hint,

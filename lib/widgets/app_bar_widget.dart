@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import '../utils/strings.dart';
+import '/utils/strings.dart';
 
-class AppBar1 extends StatelessWidget implements PreferredSizeWidget {
+class AppBarWidget extends StatelessWidget implements PreferredSizeWidget {
   final void Function(int) selectOption;
-  const AppBar1(this.selectOption, {super.key});
+  const AppBarWidget(this.selectOption, {super.key});
 
   @override
   Size get preferredSize => const Size.fromHeight(kToolbarHeight);
@@ -11,7 +11,8 @@ class AppBar1 extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      backgroundColor: Theme.of(context).colorScheme.inversePrimary,
+      // backgroundColor: Theme.of(context).colorScheme.inversePrimary,
+      backgroundColor: Colors.transparent,
       title: TextButton(
         onPressed: () => selectOption(0),
         child: Text(

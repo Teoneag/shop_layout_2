@@ -5,13 +5,13 @@ import '/main.dart';
 
 class Routes {
   static const String home = '/home';
-  static const String buyPhysical1 = '/buyPhysical1';
+  static const String buyPhysical = '/buyPhysical1';
   static const String buyDigital = '/buyDigital';
 }
 
 final Map<String, WidgetBuilder> routes = {
   Routes.home: (context) => const MyHomePage(),
-  Routes.buyPhysical1: (context) => const BuyPhysicalScreen(),
+  Routes.buyPhysical: (context) => const BuyPhysicalScreen(),
   Routes.buyDigital: (context) => const BuyDigitalScreen(),
 };
 

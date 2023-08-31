@@ -10,6 +10,9 @@ void main() {
 }
 
 // TODO add continue shopping + always remember all the choices + be able to change everything
+// TODO make it for phone as well
+// TODO make verification for zipcode, autocomplete street
+// TODO be able to type when chosing the country
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -48,16 +51,12 @@ class _MyHomePageState extends State<MyHomePage> {
     );
   }
 
-  void _teleportToSection(int section) {
-    _scrollC.jumpTo(section * (pageHeight(context) + spaceBetweenPages));
-  }
-
   @override
   void initState() {
     super.initState();
     scrollToSection = _scrollToSection;
     WidgetsBinding.instance.addPostFrameCallback((_) {
-      _teleportToSection(homeI);
+      _scrollC.jumpTo(homeI * (pageHeight(context) + spaceBetweenPages));
     });
   }
 

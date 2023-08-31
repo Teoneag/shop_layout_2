@@ -67,13 +67,13 @@ Widget cardPrices(
           const SizedBox(height: 15),
           ElevatedButton(
             onPressed: () {
-              selectedOptionNr = optionNr;
+              purchaseM.optionNr.v = optionNr;
               if (optionNr < 4) {
                 Navigator.of(context).pushNamedAndRemoveUntil(
                     Routes.buyDigital, (route) => false);
               } else {
                 Navigator.of(context).pushNamedAndRemoveUntil(
-                    Routes.buyPhysical1, (route) => false);
+                    Routes.buyPhysical, (route) => false);
               }
             },
             child: const Text('PURCHASE'),

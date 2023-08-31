@@ -34,17 +34,17 @@ class _BuyDigitalScreenState extends State<BuyDigitalScreen> {
         ),
         const SizedBox(height: 20),
         Text(
-          'Plan: ${packages[selectedOptionNr]![0]}',
+          'Plan: ${packages[purchaseM.optionNr.v]![0]}',
           style: Theme.of(context).textTheme.titleLarge,
         ),
         const SizedBox(height: 15),
         Text(
-          'Price: ${packages[selectedOptionNr]![1]}',
+          'Price: ${packages[purchaseM.optionNr.v]![1]}',
           style: Theme.of(context).textTheme.titleLarge,
         ),
         const SizedBox(height: 15),
         Text(
-          'Profit: ${packages[selectedOptionNr]![2]}',
+          'Profit: ${packages[purchaseM.optionNr.v]![2]}',
           style: Theme.of(context).textTheme.titleLarge,
         ),
         const SizedBox(height: 15),
@@ -79,16 +79,16 @@ class _BuyDigitalScreenState extends State<BuyDigitalScreen> {
                   const SizedBox(height: 15),
                   DropDown1('Choose an available region of cards', regions,
                       _regionI, setState),
-                  TextF1('Enter your email', 'example@gmail.com', _emailC,
-                      description:
-                          "We strongly recomand you to register on mail. We'll send you a track number within 24 hours of this email"),
-                  const Text(
-                      'Please fill the inpust that you can fill in depending on your region or leave blank'),
-                  const SizedBox(height: 10),
-                  TextF1('Enter additional info', 'Example info', _infoC,
-                      isMultiLine: true, isOptional: true),
-                  TextF1('Enter a promo code', 'Example promo code', _promoC,
-                      isOptional: true),
+                  // TextF1('Enter your email', 'example@gmail.com', _emailC,
+                  //     description:
+                  //         "We strongly recomand you to register on mail. We'll send you a track number within 24 hours of this email"),
+                  // const Text(
+                  //     'Please fill the inpust that you can fill in depending on your region or leave blank'),
+                  // const SizedBox(height: 10),
+                  // TextF1('Enter additional info', 'Example info', _infoC,
+                  //     isMultiLine: true, isOptional: true),
+                  // TextF1('Enter a promo code', 'Example promo code', _promoC,
+                  //     isOptional: true),
                   ElevatedButton(
                     onPressed: () {
                       if (_formKey.currentState!.validate()) {}
@@ -105,7 +105,7 @@ class _BuyDigitalScreenState extends State<BuyDigitalScreen> {
         ),
         const SizedBox(height: 30),
         if (_stepValue == 2)
-          PaymentWidget(packages[selectedOptionNr]![1] as double),
+          PaymentWidget(packages[purchaseM.optionNr.v]![1] as double),
       ],
     );
   }

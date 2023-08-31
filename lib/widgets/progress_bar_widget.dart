@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../utils/strings.dart';
+import '/utils/strings.dart';
 
 class ProgressBar extends StatelessWidget {
   final int stepValue;

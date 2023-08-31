@@ -56,9 +56,9 @@ class HomePage extends StatelessWidget {
                   const SizedBox(height: 15),
                   ElevatedButton(
                     onPressed: () {
-                      selectedOptionNr = 3;
+                      purchaseM.optionNr.v = 3;
                       Navigator.of(context).pushNamedAndRemoveUntil(
-                          Routes.buyPhysical1, (route) => false);
+                          Routes.buyPhysical, (route) => false);
                     },
                     child: const Text('PURCHASE'),
                   ),

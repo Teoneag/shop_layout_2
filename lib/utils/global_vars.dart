@@ -1,5 +1,7 @@
 // TODO move this to provider
-int selectedOptionNr = 0;
+import '/models/purchase_model.dart';
+
+final purchaseM = PurchaseModel();
 
 int homeI = 0;
 

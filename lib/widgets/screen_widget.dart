@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-import '/utils/global_vars.dart';
-import '/utils/routes.dart';
-import '../utils/strings.dart';
-import '/widgets/app_bar_widget.dart';
+import 'package:shop_layout_2/widgets/scaffold_widget.dart';
+import '/utils/strings.dart';
 
 class ScreenWidget extends StatelessWidget {
   final List<Widget> children;
@@ -12,17 +10,11 @@ class ScreenWidget extends StatelessWidget {
   const ScreenWidget(this.children,
       {this.scrollC, this.selectOption, super.key});
 
-  void _selectOption(BuildContext context, int i) {
-    homeI = i;
-    Navigator.of(context)
-        .pushNamedAndRemoveUntil(Routes.home, (route) => false);
-  }
-
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar1(selectOption ?? (i) => _selectOption(context, i)),
-      body: SingleChildScrollView(
+    return ScaffoldWidget(
+      selectOption,
+      SingleChildScrollView(
         controller: scrollC,
         child: Padding(
           padding: const EdgeInsets.symmetric(vertical: 30),

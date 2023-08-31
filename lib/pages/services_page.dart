@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:shop_layout_2/utils/global_vars.dart';
+import '/utils/global_vars.dart';
 import '/widgets/page_widget.dart';
 
 class ServicesPage extends StatelessWidget {
