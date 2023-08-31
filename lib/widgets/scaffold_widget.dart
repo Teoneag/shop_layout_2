@@ -17,18 +17,24 @@ class ScaffoldWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      extendBodyBehindAppBar: true,
-      appBar: AppBarWidget(selectOption ?? (i) => _selectOption(context, i)),
-      body: DecoratedBox(
-        decoration: const BoxDecoration(
-          image: DecorationImage(
-            image: AssetImage('assets/bg_3.jpeg'),
-            fit: BoxFit.cover,
+    return Stack(
+      children: [
+        Container(
+          decoration: const BoxDecoration(
+            image: DecorationImage(
+              image: AssetImage('assets/bg_3.jpeg'),
+              fit: BoxFit.cover,
+            ),
           ),
         ),
-        child: child,
-      ),
+        Scaffold(
+          backgroundColor: Colors.transparent,
+          appBar: AppBarWidget(
+            selectOption ?? (i) => _selectOption(context, i),
+          ),
+          body: child,
+        ),
+      ],
     );
   }
 }

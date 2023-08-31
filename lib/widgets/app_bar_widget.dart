@@ -11,8 +11,8 @@ class AppBarWidget extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      // backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-      backgroundColor: Colors.transparent,
+      backgroundColor:
+          Theme.of(context).colorScheme.inversePrimary.withOpacity(0.5),
       title: TextButton(
         onPressed: () => selectOption(0),
         child: Text(
