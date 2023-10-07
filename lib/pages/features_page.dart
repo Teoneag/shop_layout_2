@@ -14,32 +14,30 @@ class FeaturesPage extends StatelessWidget {
           Text('Features', style: Theme.of(context).textTheme.titleLarge),
           const SizedBox(height: 15),
           const Text(
-              'Nice to meet you. Here it is our benefits that you can learn'),
+            'Nice to meet you. Here it is our benefits that you can learn',
+          ),
           const SizedBox(height: 30),
-          Row(
+          const Row(
             children: [
-              const SizedBox(width: 30),
-              cardFeatures(
-                context,
+              SizedBox(width: 30),
+              CardFeatures(
                 Icons.file_copy_rounded,
                 'Clear Guides',
                 "We're providing full guides with security, anonymity and lists of shops",
               ),
-              const SizedBox(width: 30),
-              cardFeatures(
-                context,
+              SizedBox(width: 30),
+              CardFeatures(
                 Icons.refresh,
                 'Full Refund or Replace',
                 "We're providing full guides with security, anonymity and lists of shops",
               ),
-              const SizedBox(width: 30),
-              cardFeatures(
-                context,
+              SizedBox(width: 30),
+              CardFeatures(
                 Icons.price_check,
                 'Low prices',
                 "We're providing full guides with security, anonymity and lists of shops",
               ),
-              const SizedBox(width: 30),
+              SizedBox(width: 30),
             ],
           ),
         ],

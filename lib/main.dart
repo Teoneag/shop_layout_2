@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'utils/consts.dart';
+import '/utils/theme.dart';
 import '/widgets/screen_widget.dart';
 import '/utils/routes.dart';
 import 'utils/strings.dart';
@@ -16,12 +16,8 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: appName,
-      theme: ThemeData(
-        // colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
-      ),
+      theme: theme1(context),
       // TODO hide debug
-      // TODO make dark theme
       onGenerateRoute: generateLocalRoutes,
       home: const MyHomePage(),
     );

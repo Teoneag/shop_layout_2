@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import '/widgets/card_widget.dart';
 import '/widgets/page_widget.dart';
 
@@ -9,6 +10,7 @@ class PricesWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    String month = DateFormat('MMMM').format(DateTime.now());
     return PageWidget(
       Column(
         mainAxisAlignment: MainAxisAlignment.center,
@@ -16,16 +18,16 @@ class PricesWidget extends StatelessWidget {
           Text('Pricing Plans for $optionName Products',
               style: Theme.of(context).textTheme.titleLarge),
           const SizedBox(height: 15),
-          const Text('Special prices for August'),
+          Text('Special prices for $month'),
           const SizedBox(height: 30),
           Row(
             children: [
               const SizedBox(width: 30),
-              cardPrices(context, 1 + optionShift),
+              CardPrices(1 + optionShift),
               const SizedBox(width: 30),
-              cardPrices(context, 2 + optionShift),
+              CardPrices(2 + optionShift),
               const SizedBox(width: 30),
-              cardPrices(context, 3 + optionShift),
+              CardPrices(3 + optionShift),
               const SizedBox(width: 30),
             ],
           ),

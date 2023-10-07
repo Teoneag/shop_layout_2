@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import '/widgets/payment_widget.dart';
-import '/widgets/text_and_textfield_widget.dart';
 import '../utils/strings.dart';
 import '/utils/global_vars.dart';
 import '/utils/utils.dart';

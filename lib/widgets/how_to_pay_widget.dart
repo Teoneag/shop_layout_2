@@ -1,7 +1,7 @@
-import 'package:flutter/gestures.dart';
-import 'package:url_launcher/url_launcher.dart';
 import 'package:flutter/material.dart';
-import '/utils/consts.dart';
+import 'package:flutter/gestures.dart';
+import 'package:shop_layout_2/utils/theme.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class HowToPay extends StatelessWidget {
   const HowToPay({super.key});
@@ -24,9 +24,10 @@ class HowToPay extends StatelessWidget {
               text: TextSpan(
                 text:
                     'Register on any trusted bitcoin exchange service. We recommend you to create an account on ',
+                style: Theme.of(context).textTheme.bodyMedium,
                 children: [
                   TextSpan(
-                    style: urlStyle,
+                    style: linkStyle(context),
                     text: 'localbitcoins.com',
                     recognizer: TapGestureRecognizer()
                       ..onTap = () =>
@@ -51,24 +52,3 @@ class HowToPay extends StatelessWidget {
     );
   }
 }
-
-//           child: RichText(
-//             text: TextSpan(
-//               children: [
-//                 TextSpan(text: 'This is a sentence with a '),
-//                 TextSpan(
-//                   text: 'link',
-//                   style: TextStyle(color: Colors.blue),
-//                   recognizer: TapGestureRecognizer()
-//                     ..onTap = () => launch('https://www.example.com'),
-//                 ),
-//                 TextSpan(text: ' in the middle.'),
-//               ],
-//             ),
-//           ),
-//         ),
-//       ),
-//     );
-//   }
-// }
-

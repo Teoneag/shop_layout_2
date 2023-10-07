@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:shop_layout_2/widgets/scaffold_widget.dart';
+import '/widgets/scaffold_widget.dart';
 import '/utils/strings.dart';
 
 class ScreenWidget extends StatelessWidget {
@@ -13,7 +13,6 @@ class ScreenWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ScaffoldWidget(
-      selectOption,
       SingleChildScrollView(
         controller: scrollC,
         child: Padding(
@@ -28,6 +27,7 @@ class ScreenWidget extends StatelessWidget {
           ),
         ),
       ),
+      selectOption: selectOption,
     );
   }
 }

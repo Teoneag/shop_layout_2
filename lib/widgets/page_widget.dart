@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../utils/consts.dart';
+import '/utils/theme.dart';
 
 class PageWidget extends StatelessWidget {
   final Widget child;

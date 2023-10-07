@@ -1,4 +1,3 @@
-// TODO move this to provider
 import '/models/purchase_model.dart';
 
 final purchaseM = PurchaseModel();

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:shop_layout_2/utils/routes.dart';
-import '/widgets/app_bar_widget.dart';
+import 'package:shop_layout_2/widgets/button_test_widget.dart';
+import '/widgets/scaffold_widget.dart';
 import '/widgets/payment_widget.dart';
 import '/widgets/progress_bar_widget.dart';
 import '/utils/global_vars.dart';
@@ -16,8 +16,7 @@ class BuyPhysicalScreen extends StatefulWidget {
   State<BuyPhysicalScreen> createState() => _BuyPhysicalScreenState();
 }
 
-// TODO make the progress always
-// be at the top of the page
+// TODO make the progress always be at the top of the page
 
 class _BuyPhysicalScreenState extends State<BuyPhysicalScreen> {
   final _formKey = GlobalKey<FormState>();
@@ -43,17 +42,10 @@ class _BuyPhysicalScreenState extends State<BuyPhysicalScreen> {
     _promoC.dispose();
   }
 
-  void _scrollToSection(int i) {
-    homeI = i;
-    Navigator.of(context)
-        .pushNamedAndRemoveUntil(Routes.home, (route) => false);
-  }
-
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBarWidget(_scrollToSection),
-      body: Row(
+    return ScaffoldWidget(
+      Row(
         children: [
           Expanded(
             child: SingleChildScrollView(
@@ -126,10 +118,12 @@ class _BuyPhysicalScreenState extends State<BuyPhysicalScreen> {
                                 child: Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
-                                    Text("Let's order it!",
-                                        style: Theme.of(context)
-                                            .textTheme
-                                            .titleLarge),
+                                    Text(
+                                      "Let's order it!",
+                                      style: Theme.of(context)
+                                          .textTheme
+                                          .titleLarge,
+                                    ),
                                     const SizedBox(height: 15),
                                     DropDown1(
                                         'Choose an available region of cards',
@@ -210,8 +204,8 @@ class _BuyPhysicalScreenState extends State<BuyPhysicalScreen> {
                                             purchaseM.stepValue.v = 2;
                                           });
                                         },
-                                        child:
-                                            const Text('PROCEED TO CHECKOUT'),
+                                        child: const ButtonTextW(
+                                            'PROCEED TO CHECKOUT'),
                                       ),
                                     ),
                                   ],

@@ -41,7 +41,6 @@ class TextF1 extends StatelessWidget {
           child: TextFormField(
             onChanged: (value) {
               data.v = value;
-              print(data.v);
             },
             validator: (value) {
               if (isOptional == true) {

@@ -7,7 +7,7 @@ class ScaffoldWidget extends StatelessWidget {
   final Widget child;
   final void Function(int)? selectOption;
 
-  const ScaffoldWidget(this.selectOption, this.child, {super.key});
+  const ScaffoldWidget(this.child, {this.selectOption, super.key});
 
   void _selectOption(BuildContext context, int i) {
     homeI = i;
@@ -17,24 +17,28 @@ class ScaffoldWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Stack(
-      children: [
-        Container(
-          decoration: const BoxDecoration(
-            image: DecorationImage(
-              image: AssetImage('assets/bg_3.jpeg'),
-              fit: BoxFit.cover,
+    return LayoutBuilder(
+      builder: (context, constraints) {
+        return Stack(
+          children: [
+            Container(
+              decoration: const BoxDecoration(
+                image: DecorationImage(
+                  image: AssetImage('assets/bg_3.jpeg'),
+                  fit: BoxFit.cover,
+                ),
+              ),
             ),
-          ),
-        ),
-        Scaffold(
-          backgroundColor: Colors.transparent,
-          appBar: AppBarWidget(
-            selectOption ?? (i) => _selectOption(context, i),
-          ),
-          body: child,
-        ),
-      ],
+            Scaffold(
+              backgroundColor: Colors.transparent,
+              appBar: AppBarWidget(
+                selectOption ?? (i) => _selectOption(context, i),
+              ),
+              body: child,
+            ),
+          ],
+        );
+      },
     );
   }
 }

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:qr_flutter/qr_flutter.dart';
+import '/utils/theme.dart';
+import '/widgets/button_test_widget.dart';
 import '/api/cryptocompare_api.dart';
 import '/utils/strings.dart';
 import '/widgets/how_to_pay_widget.dart';
@@ -58,14 +60,12 @@ class _PaymentWidgetState extends State<PaymentWidget> {
                   },
                 ),
                 const SizedBox(height: 10),
-                const Text(
+                Text(
                   'Be careful and use only clearnet trusted btc services like coinbase, kraken, localbitcoins, blockchain.com etc.',
-                  style: TextStyle(
-                      color: Colors.red), // TODO make a style from this
+                  style: importantStyle(context),
                 ),
                 const SizedBox(height: 10),
-                Align(
-                  alignment: Alignment.center,
+                Center(
                   child: Column(
                     children: [
                       QrImageView(
@@ -85,7 +85,7 @@ class _PaymentWidgetState extends State<PaymentWidget> {
                                 _isCopied = true;
                               }));
                         },
-                        child: Text(!_isCopied
+                        child: ButtonTextW(!_isCopied
                             ? 'Copy address to clipboard'
                             : 'Copied to clipboard - tap to copy again'),
                       ),
@@ -96,7 +96,6 @@ class _PaymentWidgetState extends State<PaymentWidget> {
                 Text('Payment status',
                     style: Theme.of(context).textTheme.titleLarge),
                 const SizedBox(height: 15),
-                // TODO add timer
                 const Text(
                     'You have 30 minutes to complete your payment. We reserved chosen products for your order ID. After we receive your payment, you will get an e-mail with your order details and next instructions. If you have any questions, please contact us at.'),
                 const SizedBox(height: 10),
@@ -118,9 +117,11 @@ class _PaymentWidgetState extends State<PaymentWidget> {
                       .toList(),
                 ),
                 const SizedBox(height: 10),
-                ElevatedButton(
-                  onPressed: () {},
-                  child: const Text('BUY ANOTHER CARD'),
+                Center(
+                  child: ElevatedButton(
+                    onPressed: () {},
+                    child: const ButtonTextW('BUY ANOTHER CARD'),
+                  ),
                 ),
               ],
             ),

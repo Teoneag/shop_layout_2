@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import '../utils/strings.dart';
+import '/widgets/button_test_widget.dart';
+import '/utils/strings.dart';
 import '/utils/global_vars.dart';
 import '/utils/routes.dart';
 
@@ -16,72 +17,86 @@ Widget cardGeneral({required Widget child}) {
   );
 }
 
-Widget cardFeatures(
-    BuildContext context, IconData icon, String title, String description) {
-  return Expanded(
-    child: cardGeneral(
-      child: Column(
-        children: [
-          Icon(icon, size: 50, color: Theme.of(context).primaryColor),
-          const SizedBox(height: 15),
-          Text(
-            title,
-            style: Theme.of(context).textTheme.titleLarge,
-          ),
-          const SizedBox(height: 15),
-          Text(
-            description,
-            textAlign: TextAlign.center,
-          ),
-        ],
+class CardFeatures extends StatelessWidget {
+  final IconData icon;
+  final String title;
+  final String description;
+  const CardFeatures(this.icon, this.title, this.description, {super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Expanded(
+      child: cardGeneral(
+        child: Column(
+          children: [
+            Icon(
+              icon,
+              size: 50,
+              color: Theme.of(context).primaryColor,
+            ),
+            const SizedBox(height: 15),
+            Text(
+              title,
+              style: Theme.of(context).textTheme.titleLarge,
+            ),
+            const SizedBox(height: 15),
+            Text(
+              description,
+              textAlign: TextAlign.center,
+            ),
+          ],
+        ),
       ),
-    ),
-  );
+    );
+  }
 }
 
-Widget cardPrices(
-  BuildContext context,
-  int optionNr,
-) {
-  return Expanded(
-    child: cardGeneral(
-      child: Column(
-        children: [
-          Text(
-            '${packages[optionNr]![0]}',
-            style: Theme.of(context).textTheme.titleLarge,
-          ),
-          const SizedBox(height: 15),
-          Text(
-            '\$${packages[optionNr]![1]}',
-            style: Theme.of(context).textTheme.displayLarge,
-          ),
-          const SizedBox(height: 15),
-          Text('Total value ~ \$${packages[optionNr]![2]}'),
-          const SizedBox(height: 5),
-          Text('${packages[optionNr]![3]} items'),
-          const SizedBox(height: 5),
-          Text('Each item limit > \$${packages[optionNr]![4]}'),
-          const SizedBox(height: 5),
-          Text('${packages[optionNr]![5]}'),
-          const SizedBox(height: 15),
-          ElevatedButton(
-            onPressed: () {
-              purchaseM.optionNr.v = optionNr;
-              if (optionNr < 4) {
-                Navigator.of(context).pushNamedAndRemoveUntil(
-                    Routes.buyDigital, (route) => false);
-              } else {
-                Navigator.of(context).pushNamedAndRemoveUntil(
-                    Routes.buyPhysical, (route) => false);
-              }
-            },
-            child: const Text('PURCHASE'),
-          ),
-        ],
+class CardPrices extends StatelessWidget {
+  final int optionNr;
+  const CardPrices(this.optionNr, {super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Expanded(
+      child: cardGeneral(
+        child: Column(
+          children: [
+            Text(
+              '${packages[optionNr]![0]}',
+              style: Theme.of(context).textTheme.titleLarge,
+            ),
+            const SizedBox(height: 15),
+            Text(
+              '\$${packages[optionNr]![1]}',
+              style: Theme.of(context).textTheme.displayLarge,
+            ),
+            const SizedBox(height: 15),
+            Text('Total value ~ \$${packages[optionNr]![2]}'),
+            const SizedBox(height: 5),
+            Text('${packages[optionNr]![3]} items'),
+            const SizedBox(height: 5),
+            Text('Each item limit > \$${packages[optionNr]![4]}'),
+            const SizedBox(height: 5),
+            Text('${packages[optionNr]![5]}'),
+            const SizedBox(height: 15),
+            ElevatedButton(
+              onPressed: () {
+                purchaseM.optionNr.v = optionNr;
+                if (optionNr < 4) {
+                  Navigator.of(context).pushNamedAndRemoveUntil(
+                      Routes.buyDigital, (route) => false);
+                } else {
+                  Navigator.of(context).pushNamedAndRemoveUntil(
+                      Routes.buyPhysical, (route) => false);
+                }
+              },
+              child: const ButtonTextW('PURCHASE'),
+            ),
+          ],
+        ),
       ),
-    ),
-  );
+    );
+  }
 }
 
 class CardFaq extends StatefulWidget {
@@ -123,23 +138,30 @@ class _CardFaqState extends State<CardFaq> {
   }
 }
 
-Widget cardTestimonial(BuildContext context, String name, String testimonial) {
-  return cardGeneral(
-    child: Column(
-      children: [
-        Text(
-          name,
-          style: Theme.of(context).textTheme.titleLarge,
-        ),
-        const SizedBox(height: 15),
-        Text(
-          testimonial,
-          textAlign: TextAlign.center,
-        ),
-      ],
-    ),
-  );
-}
+// class CardTestimonial extends StatelessWidget {
+//   final String name;
+//   final String testimonial;
+//   const CardTestimonial(this.name, this.testimonial, {super.key});
+
+//   @override
+//   Widget build(BuildContext context) {
+//     return cardGeneral(
+//       child: Column(
+//         children: [
+//           Text(
+//             name,
+//             style: Theme.of(context).textTheme.titleLarge,
+//           ),
+//           const SizedBox(height: 15),
+//           Text(
+//             testimonial,
+//             textAlign: TextAlign.center,
+//           ),
+//         ],
+//       ),
+//     );
+//   }
+// }
 
 Widget cardCheck(String text) {
   return Card(

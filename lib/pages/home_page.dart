@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:shop_layout_2/widgets/button_test_widget.dart';
 import '/utils/global_vars.dart';
 import '/utils/routes.dart';
 import '/widgets/card_widget.dart';
 import '/widgets/page_widget.dart';
-import '../utils/strings.dart';
+import '/utils/strings.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -20,10 +21,13 @@ class HomePage extends StatelessWidget {
             children: [
               Text(
                 'Welcome to $appName, The Most Friendly Store',
-                style: Theme.of(context).textTheme.titleLarge,
+                style: Theme.of(context).textTheme.headlineLarge,
               ),
               const SizedBox(height: 15),
-              const Text("We're selling physical and digital products"),
+              Text(
+                "We're selling physical and digital products",
+                style: Theme.of(context).textTheme.bodyMedium,
+              ),
               const SizedBox(height: 15),
               ...homeBenefits.map((e) => cardCheck(e)).toList(),
             ],
@@ -34,12 +38,12 @@ class HomePage extends StatelessWidget {
                 children: [
                   Text(
                     'Most popular',
-                    style: Theme.of(context).textTheme.titleLarge,
+                    style: Theme.of(context).textTheme.headlineLarge,
                   ),
                   const SizedBox(height: 15),
                   Text(
                     '${packages[3]![0]} ${packages[3]![3]} ${item}s PACK',
-                    style: Theme.of(context).textTheme.titleMedium,
+                    style: Theme.of(context).textTheme.titleLarge,
                   ),
                   const SizedBox(height: 15),
                   Text(
@@ -49,7 +53,7 @@ class HomePage extends StatelessWidget {
                   const SizedBox(height: 15),
                   Text(
                     'Each $item limit > \$${packages[3]![2]}',
-                    style: Theme.of(context).textTheme.titleSmall,
+                    style: Theme.of(context).textTheme.titleLarge,
                   ),
                   const SizedBox(height: 5),
                   const Text('Use via ... guide'),
@@ -60,7 +64,7 @@ class HomePage extends StatelessWidget {
                       Navigator.of(context).pushNamedAndRemoveUntil(
                           Routes.buyPhysical, (route) => false);
                     },
-                    child: const Text('PURCHASE'),
+                    child: const ButtonTextW("PURCHASE"),
                   ),
                 ],
               ),
