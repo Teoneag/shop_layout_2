@@ -4,13 +4,13 @@ import '/utils/utils.dart';
 
 class TextF1 extends StatelessWidget {
   final String text;
-  final String? description;
   final String hint;
   final TextEditingController controller;
   final StringW data;
+  final String? description;
   final bool? isMultiLine;
   final bool? isOptional;
-  final bool? isEmail;
+  final String? autofillHints;
 
   const TextF1(
     this.text,
@@ -20,7 +20,7 @@ class TextF1 extends StatelessWidget {
     this.description,
     this.isMultiLine,
     this.isOptional,
-    this.isEmail,
+    this.autofillHints,
     super.key,
   });
 
@@ -39,6 +39,8 @@ class TextF1 extends StatelessWidget {
         SizedBox(
           width: MediaQuery.of(context).size.width / 4,
           child: TextFormField(
+            autovalidateMode: AutovalidateMode.onUserInteraction,
+            autofillHints: autofillHints != null ? [autofillHints!] : null,
             onChanged: (value) {
               data.v = value;
             },
@@ -49,14 +51,15 @@ class TextF1 extends StatelessWidget {
               if (value == null || value.isEmpty) {
                 return 'Please complete this field';
               }
-              if (isEmail == true) {
+              if (autofillHints != null &&
+                  autofillHints == AutofillHints.email) {
                 if (!EmailValidator.validate(value)) {
                   return 'Please enter a valid email address';
                 }
               }
               return null;
             },
-            // controller: controller,
+            controller: controller,
             maxLines: isMultiLine == true ? 5 : 1,
             decoration: InputDecoration(
               hintText: hint,

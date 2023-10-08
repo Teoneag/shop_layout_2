@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
+import '/widgets/button_test_widget.dart';
+import '/widgets/text_and_textfield_widget.dart';
+import '/widgets/screen_2_columns_widget.dart';
 import '/widgets/payment_widget.dart';
-import '../utils/strings.dart';
+import '/utils/strings.dart';
 import '/utils/global_vars.dart';
 import '/utils/utils.dart';
 import '/widgets/card_widget.dart';
 import '/widgets/drop_down_widget.dart';
-import '/widgets/progress_bar_widget.dart';
-import '/widgets/screen_widget.dart';
 
 class BuyDigitalScreen extends StatefulWidget {
   const BuyDigitalScreen({super.key});
@@ -17,15 +18,13 @@ class BuyDigitalScreen extends StatefulWidget {
 
 class _BuyDigitalScreenState extends State<BuyDigitalScreen> {
   final _formKey = GlobalKey<FormState>();
-  int _stepValue = 1;
   final _regionI = IntW(0);
   final _emailC = TextEditingController();
-  final _infoC = TextEditingController();
   final _promoC = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
-    return ScreenWidget(
+    return Screen2ColumnsWidget(
       [
         Text(
           'Digital Products',
@@ -62,9 +61,8 @@ class _BuyDigitalScreenState extends State<BuyDigitalScreen> {
               ),
             )
             .toList(),
-        const SizedBox(height: 30),
-        ProgressBar(_stepValue),
-        const SizedBox(height: 20),
+      ],
+      [
         Card(
           child: Padding(
             padding: const EdgeInsets.all(15),
@@ -73,29 +71,44 @@ class _BuyDigitalScreenState extends State<BuyDigitalScreen> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text("Let's order it!",
-                      style: Theme.of(context).textTheme.titleLarge),
+                  Text(
+                    "Let's order it!",
+                    style: Theme.of(context).textTheme.titleLarge,
+                  ),
                   const SizedBox(height: 15),
-                  DropDown1('Choose an available region of cards', regions,
-                      _regionI, setState),
-                  // TextF1('Enter your email', 'example@gmail.com', _emailC,
-                  //     description:
-                  //         "We strongly recomand you to register on mail. We'll send you a track number within 24 hours of this email"),
-                  // const Text(
-                  //     'Please fill the inpust that you can fill in depending on your region or leave blank'),
-                  // const SizedBox(height: 10),
-                  // TextF1('Enter additional info', 'Example info', _infoC,
-                  //     isMultiLine: true, isOptional: true),
-                  // TextF1('Enter a promo code', 'Example promo code', _promoC,
-                  //     isOptional: true),
-                  ElevatedButton(
-                    onPressed: () {
-                      if (_formKey.currentState!.validate()) {}
-                      setState(() {
-                        _stepValue = 2;
-                      });
-                    },
-                    child: const Text('PROCEED TO CHECKOUT'),
+                  DropDown1(
+                    'Choose an available region of cards',
+                    regions,
+                    _regionI,
+                    setState,
+                  ),
+                  TextF1(
+                    'Enter your email',
+                    'example@gmail.com',
+                    _emailC,
+                    purchaseM.email,
+                    description:
+                        "We strongly recomand you to register on mail. We'll send you a track number within 24 hours of this email",
+                    autofillHints: AutofillHints.email,
+                  ),
+                  TextF1(
+                    'Enter a promo code',
+                    'Example promo code',
+                    _promoC,
+                    purchaseM.promo,
+                    isOptional: true,
+                  ),
+                  Visibility(
+                    visible: purchaseM.stepValue.v == 1,
+                    child: ElevatedButton(
+                      onPressed: () {
+                        if (_formKey.currentState!.validate()) {}
+                        setState(() {
+                          purchaseM.stepValue.v = 2;
+                        });
+                      },
+                      child: const ButtonTextW('PROCEED TO CHECKOUT'),
+                    ),
                   ),
                 ],
               ),
@@ -103,7 +116,7 @@ class _BuyDigitalScreenState extends State<BuyDigitalScreen> {
           ),
         ),
         const SizedBox(height: 30),
-        if (_stepValue == 2)
+        if (purchaseM.stepValue.v == 2)
           PaymentWidget(packages[purchaseM.optionNr.v]![1] as double),
       ],
     );

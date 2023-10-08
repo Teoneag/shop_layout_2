@@ -133,7 +133,7 @@ const regions = [
 
 const shippingM = [
   'UPS standard delivery | 7 - 12 days | \$0',
-  'UPS express delivery | 2 - 56 days | \$20',
+  'UPS express delivery | 2 - 6 days | \$20',
 ];
 
 const tableValues = [

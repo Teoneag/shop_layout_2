@@ -6,12 +6,17 @@ By Teodor Neagoe
 2. Easily modifiable & scalable
 
 ## TODO
-### Continue shopping + always remember all the choices + be able to change everything
 ### Responsive layout: make it for phone as well
 ### Aestetics
 - change fonts
 - make verification for zipcode, autocomplete street
 - be able to type when chosing the country
+### Details
+- Continue shopping
+- modify cart
+- messages to add, give tip...
+- city selection, autocomplete street...
+- Add cookies check
 ### Modify btc addess
 
 ## To decide
