@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
+
 import '/widgets/button_test_widget.dart';
 import '/widgets/text_and_textfield_widget.dart';
 import '/widgets/screen_2_columns_widget.dart';
 import '/widgets/payment_widget.dart';
 import '/utils/strings.dart';
 import '/utils/global_vars.dart';
-import '/utils/utils.dart';
 import '/widgets/card_widget.dart';
 import '/widgets/drop_down_widget.dart';
 
@@ -18,9 +18,9 @@ class BuyDigitalScreen extends StatefulWidget {
 
 class _BuyDigitalScreenState extends State<BuyDigitalScreen> {
   final _formKey = GlobalKey<FormState>();
-  final _regionI = IntW(0);
-  final _emailC = TextEditingController();
-  final _promoC = TextEditingController();
+  // final _regionI = IntW(0);
+  final _emailC = TextEditingController(text: purchaseM.email.v);
+  final _promoC = TextEditingController(text: purchaseM.promo.v);
 
   @override
   Widget build(BuildContext context) {
@@ -79,7 +79,7 @@ class _BuyDigitalScreenState extends State<BuyDigitalScreen> {
                   DropDown1(
                     'Choose an available region of cards',
                     regions,
-                    _regionI,
+                    purchaseM.region,
                     setState,
                   ),
                   TextF1(

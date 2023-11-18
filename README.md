@@ -22,11 +22,12 @@ A simple, cross platform, easily scalable shop layout
 2. Easily modifiable & scalable
 
 ## TODO
-### Responsive layout: make it for phone as well
+- ### Responsive layout: make it for phone as well
 ### Aestetics
 - change fonts
 - make verification for zipcode, autocomplete street
 - be able to type when chosing the country
+- background animation
 ### Details
 - Continue shopping
 - modify cart
@@ -37,3 +38,7 @@ A simple, cross platform, easily scalable shop layout
 
 ## To decide
 - on appbar: prices -> prices digital, prices physical: good/bad?
+
+## DOONE
+### 18.11.2023
+- save data for digital as well
