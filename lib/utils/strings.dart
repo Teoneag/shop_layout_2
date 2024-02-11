@@ -5,7 +5,7 @@ import '/pages/home_page.dart';
 import '/pages/physical_prices_page.dart';
 import '/pages/services_page.dart';
 
-const appName = 'Shop layout 2';
+const appName = 'Shop template 2';
 
 const pages = {
   'HOME': HomePage(),
