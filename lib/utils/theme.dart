@@ -13,7 +13,6 @@ ThemeData theme1(BuildContext context) {
   Color primaryColor = Colors.white;
 
   return ThemeData.dark().copyWith(
-    useMaterial3: true,
     primaryColor: Colors.white,
     inputDecorationTheme: InputDecorationTheme(
       errorStyle: Theme.of(context).textTheme.bodyMedium!.copyWith(

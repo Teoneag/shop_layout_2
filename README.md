@@ -22,12 +22,17 @@ A simple, cross platform, easily scalable shop layout
 2. Easily modifiable & scalable
 
 ## TODO
-- ### Responsive layout: make it for phone as well
+### Responsive layout: make it for phone as well
+  layout builder
+  
+### Chose product when buying
 ### Aestetics
+- why when using ctrl + or ctrl - the layout canges in a strange way?
 - change fonts
 - make verification for zipcode, autocomplete street
 - be able to type when chosing the country
-- background animation
+- background animation + img
+- https://pub.dev/packages/auto_size_text_field/install
 ### Details
 - Continue shopping
 - modify cart

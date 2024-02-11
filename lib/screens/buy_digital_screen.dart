@@ -18,7 +18,6 @@ class BuyDigitalScreen extends StatefulWidget {
 
 class _BuyDigitalScreenState extends State<BuyDigitalScreen> {
   final _formKey = GlobalKey<FormState>();
-  // final _regionI = IntW(0);
   final _emailC = TextEditingController(text: purchaseM.email.v);
   final _promoC = TextEditingController(text: purchaseM.promo.v);
 

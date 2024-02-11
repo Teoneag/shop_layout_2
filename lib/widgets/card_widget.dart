@@ -21,24 +21,51 @@ class CardFeatures extends StatelessWidget {
   final IconData icon;
   final String title;
   final String description;
-  const CardFeatures(this.icon, this.title, this.description, {super.key});
+  final bool isSmall;
+  const CardFeatures(
+    this.icon,
+    this.title,
+    this.description, {
+    this.isSmall = false,
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
-    return Expanded(
-      child: cardGeneral(
+    return cardGeneral(
+      child: IntrinsicHeight(
         child: Column(
           children: [
-            Icon(
-              icon,
-              size: 50,
-              color: Theme.of(context).primaryColor,
-            ),
-            const SizedBox(height: 15),
-            Text(
-              title,
-              style: Theme.of(context).textTheme.titleLarge,
-            ),
+            if (isSmall)
+              Row(
+                children: [
+                  Icon(
+                    icon,
+                    size: 50,
+                    color: Theme.of(context).primaryColor,
+                  ),
+                  const SizedBox(width: 15),
+                  Text(
+                    title,
+                    style: Theme.of(context).textTheme.titleLarge,
+                  )
+                ],
+              )
+            else
+              Column(
+                children: [
+                  Icon(
+                    icon,
+                    size: 50,
+                    color: Theme.of(context).primaryColor,
+                  ),
+                  const SizedBox(height: 15),
+                  Text(
+                    title,
+                    style: Theme.of(context).textTheme.titleLarge,
+                  )
+                ],
+              ),
             const SizedBox(height: 15),
             Text(
               description,
