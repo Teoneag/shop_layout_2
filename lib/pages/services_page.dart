@@ -25,14 +25,14 @@ class ServicesPage extends StatelessWidget {
                     children: [
                       TextButton(
                         onPressed: () {
-                          scrollToSection(4);
+                          // scrollToSection(4);
                         },
                         child: const ButtonTextW('Digital Services'),
                       ),
                       const Text(' | '),
                       TextButton(
                         onPressed: () {
-                          scrollToSection(5);
+                          // scrollToSection(5);
                         },
                         child: const ButtonTextW('Physical Services'),
                       ),

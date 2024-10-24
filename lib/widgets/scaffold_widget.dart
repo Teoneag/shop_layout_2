@@ -10,7 +10,7 @@ class ScaffoldWidget extends StatelessWidget {
   const ScaffoldWidget(this.child, {this.selectOption, super.key});
 
   void _selectOption(BuildContext context, int i) {
-    homeI = i;
+    // homeI = i;
     Navigator.of(context)
         .pushNamedAndRemoveUntil(Routes.home, (route) => false);
   }

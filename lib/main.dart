@@ -25,7 +25,8 @@ class MyApp extends StatelessWidget {
 }
 
 class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key});
+  final int homeI = 0;
+  const MyHomePage({super.key, homeI});
 
   @override
   State<MyHomePage> createState() => _MyHomePageState();
@@ -42,14 +43,14 @@ class _MyHomePageState extends State<MyHomePage> {
     );
   }
 
-  @override
-  void initState() {
-    super.initState();
-    scrollToSection = _scrollToSection;
-    WidgetsBinding.instance.addPostFrameCallback((_) {
-      _scrollC.jumpTo(homeI * (pageHeight(context) + spaceBetweenPages));
-    });
-  }
+  // @override
+  // void initState() {
+  //   super.initState();
+  //   scrollToSection = _scrollToSection;
+  //   WidgetsBinding.instance.addPostFrameCallback((_) {
+  //     _scrollC.jumpTo(homeI * (pageHeight(context) + spaceBetweenPages));
+  //   });
+  // }
 
   @override
   void dispose() {
